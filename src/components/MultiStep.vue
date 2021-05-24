@@ -1,6 +1,6 @@
 <template>
-    <div v-if="inputData">
-        {{ inputData.title }}
+    <div v-if="inputData" class="multi-step-form">
+        <h3>{{ inputData.title }}</h3>
         <dl v-if="currentData">
             <dt>({{ currentData.itemId }}) {{ currentData.title }}</dt>
             <dd v-if="currentData.formType == 1">
@@ -41,19 +41,12 @@ export default {
             inputData: {},
             currentData: {},
             currentDataIdx: 0,
-            formType: [
-                { id: 1, type: 'Checkbox' },
-                { id: 2, type: 'Radio' },
-                { id: 3, type: 'Text Input' },
-                { id: 4, type: 'Selectbox' },
-            ],
         }
     },
     beforeCreate() {},
     created() {
-        this.inputData = InputData,
-        this.currentData = InputData.items[0],
-        console.log('currentData', this.currentData)
+        this.inputData = InputData;
+        this.currentData = InputData.items[0];
     },
     beforeMount() {},
     mounted() {},
@@ -76,4 +69,12 @@ export default {
 </script>
 
 <style lang="scss">
+.multi-step-form {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 20px 10px;
+
+    h3 {
+    }
+}
 </style>
