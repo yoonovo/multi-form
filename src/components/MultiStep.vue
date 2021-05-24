@@ -73,8 +73,5 @@ export default {
     border: 1px solid #000;
     text-align: center;
     padding: 20px 10px;
-
-    h3 {
-    }
 }
 </style>
