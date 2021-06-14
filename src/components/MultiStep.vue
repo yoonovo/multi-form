@@ -49,7 +49,6 @@ export default {
             currentData: {},
             currentDataIdx: 0,
             outputData: {},
-            printData: ''
         }
     },
     beforeCreate() {},
@@ -119,10 +118,11 @@ export default {
                 })
                 return tot;
             }, []);
-            this.printData = JSON.stringify({
+            
+            this.$router.push({path: '/complete', query: {
                 id: this.inputData['formId'],
-                items: items
-            });
+                items: JSON.stringify(items)
+            }});
         },
         selectCheckbox(item, itemId){
             const idx = this.outputData[itemId] ? this.outputData[itemId].findIndex(v => v.id === item.id) : false;
@@ -242,8 +242,10 @@ h3 {
         font-size: 18px;
         border: 1px solid #000;
         border-radius: 3px;
+        cursor: pointer;
 
-        &.next.active {
+        &.next.active,
+        &.submit {
             background: #000;
             color: #fff;
         }
