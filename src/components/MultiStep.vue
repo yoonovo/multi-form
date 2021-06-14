@@ -35,7 +35,6 @@
             <button class="btn next" :class="{ 'active': checkValidation() }" v-if="currentDataIdx < (this.inputData['items'].length-1)" :disabled="!checkValidation()" @click="nextPage()">next &gt;</button>
             <button class="btn submit" v-if="currentDataIdx == (this.inputData['items'].length-1)" @click="submit()">Submit</button>  
         </div>
-        <div v-if="printData" :innerHTML="printData"></div>
     </div>
 </template>
 
@@ -120,12 +119,10 @@ export default {
                 })
                 return tot;
             }, []);
-            const printData = {
+            this.printData = JSON.stringify({
                 id: this.inputData['formId'],
                 items: items
-            }
-            this.printData = JSON.stringify(printData);
-            console.log('output.json', printData)
+            });
         },
         selectCheckbox(item, itemId){
             const idx = this.outputData[itemId] ? this.outputData[itemId].findIndex(v => v.id === item.id) : false;
@@ -140,7 +137,6 @@ export default {
         },
         selectRadio(text, itemId){
             this.outputData[itemId] = text;
-            console.log('this.outputData', this.outputData)
         }
     }
 }

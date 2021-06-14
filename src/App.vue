@@ -1,14 +1,15 @@
 <template>
-  <MultiStep />
+  <!-- <MultiStep /> -->
+  <router-view />
 </template>
 
 <script>
-import MultiStep from './components/MultiStep.vue';
+// import MultiStep from './components/MultiStep.vue';
 
 export default {
   name: 'App',
   components: {
-    MultiStep
+    // MultiStep
   }
 }
 </script>
