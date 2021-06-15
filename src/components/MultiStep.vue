@@ -125,10 +125,11 @@ export default {
                 return tot;
             }, []);
             
-            this.$router.push({path: '/complete', query: {
-                id: this.inputData['formId'],
-                items: JSON.stringify(items)
-            }});
+            alert('제출이 완료되었습니다.');
+            // this.$router.push({path: '/complete', query: {
+            //     id: this.inputData['formId'],
+            //     items: JSON.stringify(items)
+            // }});
         },
         selectCheckbox(item, itemId){
             const idx = this.outputData[itemId] ? this.outputData[itemId].findIndex(v => v.id === item.id) : false;
