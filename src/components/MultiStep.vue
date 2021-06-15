@@ -182,10 +182,12 @@ h3 {
             font-weight: bold;
             border-radius: 30px;
             font-size: 33px;
-
+            
             &.active {
                 background-color: #000;
                 color: #fff;
+                animation-name: stepFull;
+                animation-duration:1s;
             }
 
             &:last-child {
@@ -198,7 +200,7 @@ h3 {
         }
 
         .contents-bar {
-            width: 50px;
+            width: 30px;
             height: 5px;
             background-color: #000;
         }
@@ -273,5 +275,14 @@ h3 {
             color: #fff;
         }
     }
+}
+
+@-webkit-keyframes stepFull {
+  0% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: #000;
+  }
 }
 </style>
