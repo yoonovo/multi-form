@@ -1,9 +1,9 @@
 <template>
-    <div v-if="inputData">
+    <div id="multi-step" v-if="inputData">
         <h3>{{ inputData.title }}</h3>
         <div class="multi-step-index">
             <div class="multi-step-index-layar" v-for="(item, index) in inputData.items" :key="index">
-                <span class="contents" :class="{ 'active': currentDataIdx === index }">{{ index+1 }}</span>
+                <span class="contents" :class="{ 'active': currentDataIdx >= index }">{{ index+1 }}</span>
                 <span class="contents-bar"></span>
             </div>
         </div>
@@ -43,6 +43,12 @@ import { InputData } from '../assets/input.ts';
 
 export default {
     name: 'MultiStep',
+    // setup() {
+    //     const state = reactive({
+    //       username: '',
+    //       password: ''
+    //     })
+    // },
     data() {
         return {
             inputData: {},
@@ -143,13 +149,20 @@ export default {
 </script>
 
 <style lang="scss">
+#multi-step {
+    display: block;
+    width: 90%;
+    padding: 0 5%;
+}
+
 h3 {
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 .multi-step-index {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
 
@@ -162,13 +175,13 @@ h3 {
         .contents {
             width: 50px;
             height: 50px;
-            line-height: 52px;
+            line-height: 56px;
             background-color: #fff;
             color: #000;
             border: 1px solid #000;
             font-weight: bold;
             border-radius: 30px;
-            font-size: 24px;
+            font-size: 33px;
 
             &.active {
                 background-color: #000;
@@ -209,13 +222,22 @@ h3 {
     .checkbox-area,
     .radio-area {
         display: flex;
+        margin-bottom: 20px;
+        flex-direction: column;
 
         span {
             flex-basis: 33.3%;
+            line-height: 30px;
+
+            label {
+                margin-left: 10px;
+            }
         }
     }
 
     .input-area {
+        margin-bottom: 20px;
+
         input[type="text"] {
             height: 25px;
             text-indent: 10px;
@@ -227,6 +249,7 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 20px;
 
         select {
             height: 25px;

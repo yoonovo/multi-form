@@ -34,7 +34,7 @@ export const InputData = {
             ]
         }, {
             "itemId": 3,
-            "title": "추가로 원하시는 청소 스타일이 있나요? 직접 입력해주세요",
+            "title": "추가로 원하시는 청소 스타일이 있나요?",
             "formType": 3,
             "options": []
         }, {
