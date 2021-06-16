@@ -118,6 +118,7 @@ export default {
                 return tot;
             }, []);
             
+            console.log('Data: ', items)
             alert('설문이 완료되었습니다.');
             this.$router.push({ path: '/complete' });
         },
