@@ -1,10 +1,10 @@
 <template>
     <div id="multi-step" v-if="inputData">
-        <h3>{{ inputData.title }}</h3>
+        <h3 class="multi-step-title">{{ inputData.title }}</h3>
         <div class="multi-step-index">
-            <div class="multi-step-index-layar" v-for="(item, index) in inputData.items" :key="index">
-                <span class="contents" :class="{ 'active': currentDataIdx >= index }">{{ index+1 }}</span>
-                <span class="contents-bar"></span>
+            <div class="multi-step-index-layar" v-for="(item, index) in inputData.items" :key="index" :style="{ 'width': (100/inputData.items.length) + '%' }">
+                <!-- <span class="contents" :class="{ 'active': currentDataIdx >= index }">{{ index+1 }}</span> -->
+                <span class="contents-bar" :class="{ 'active': currentDataIdx >= index }"></span>
             </div>
         </div>
         <div class="multi-step-form">
@@ -125,11 +125,8 @@ export default {
                 return tot;
             }, []);
             
-            alert('제출이 완료되었습니다.');
-            // this.$router.push({path: '/complete', query: {
-            //     id: this.inputData['formId'],
-            //     items: JSON.stringify(items)
-            // }});
+            alert('설문이 완료되었습니다.');
+            this.$router.push({ path: '/complete' });
         },
         selectCheckbox(item, itemId){
             const idx = this.outputData[itemId] ? this.outputData[itemId].findIndex(v => v.id === item.id) : false;
@@ -156,14 +153,14 @@ export default {
     padding: 0 5%;
 }
 
-h3 {
+.multi-step-title {
     text-align: center;
     font-size: 30px;
     margin-bottom: 20px;
 }
 
 .multi-step-index {
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
     display: flex;
     justify-content: center;
 
@@ -187,8 +184,8 @@ h3 {
             &.active {
                 background-color: #000;
                 color: #fff;
-                animation-name: stepFull;
-                animation-duration:1s;
+                // animation-name: stepFull;
+                // animation-duration:1s;
             }
 
             &:last-child {
@@ -197,13 +194,24 @@ h3 {
         }
 
         &:last-child .contents-bar {
-            display: none;
+            // display: none;
+            margin-right: 0px;
         }
 
         .contents-bar {
-            width: 30px;
+            width: 100%;
+            border: 1px solid #000;
             height: 5px;
-            background-color: #000;
+            margin-right: 1px;
+            // background-color: #000;
+
+            &.active {
+                background-color: #000;
+                border: 1px solid #000;
+                color: #fff;
+                animation-name: stepFull;
+                animation-duration:1s;
+            }
         }
     }
 }
@@ -215,7 +223,7 @@ h3 {
     margin-bottom: 25px;
 
     dt {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
 
     dd {
@@ -225,7 +233,7 @@ h3 {
     .checkbox-area,
     .radio-area {
         display: flex;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         flex-direction: column;
 
         span {
@@ -239,7 +247,7 @@ h3 {
     }
 
     .input-area {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
 
         input[type="text"] {
             height: 25px;
@@ -252,7 +260,7 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
 
         select {
             height: 25px;
