@@ -3,7 +3,6 @@
         <h3 class="multi-step-title">{{ inputData.title }}</h3>
         <div class="multi-step-index">
             <div class="multi-step-index-layar" v-for="(item, index) in inputData.items" :key="index" :style="{ 'width': (100/inputData.items.length) + '%' }">
-                <!-- <span class="contents" :class="{ 'active': currentDataIdx >= index }">{{ index+1 }}</span> -->
                 <span class="contents-bar" :class="{ 'active': currentDataIdx >= index }"></span>
             </div>
         </div>
@@ -43,12 +42,6 @@ import { InputData } from '../assets/input.ts';
 
 export default {
     name: 'MultiStep',
-    // setup() {
-    //     const state = reactive({
-    //       username: '',
-    //       password: ''
-    //     })
-    // },
     data() {
         return {
             inputData: {},
@@ -160,7 +153,6 @@ export default {
 }
 
 .multi-step-index {
-    // margin-bottom: 40px;
     display: flex;
     justify-content: center;
 
@@ -184,8 +176,6 @@ export default {
             &.active {
                 background-color: #000;
                 color: #fff;
-                // animation-name: stepFull;
-                // animation-duration:1s;
             }
 
             &:last-child {
@@ -194,7 +184,6 @@ export default {
         }
 
         &:last-child .contents-bar {
-            // display: none;
             margin-right: 0px;
         }
 
@@ -203,7 +192,6 @@ export default {
             border: 1px solid #000;
             height: 5px;
             margin-right: 1px;
-            // background-color: #000;
 
             &.active {
                 background-color: #000;
